@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Casey Jones' train station</title>
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-database.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/css/output.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+
+</head>
+
+<body>
+    <header id="page-header" class="w-screen">
+        <h1>Casey Jone's <br>Train Station</h1>
+        <p>you better watch your speed</p>
+    </header>
+    <section id="train-table">
+        <div class="max-w-full border-gray-200 text-white rounded overflow-hidden shadow-xl">
+            <div id="current-train-header" class="text-center text-2xl w-full px-5 py-5">Current Train Schedule</div>
+            <div class="px-6 py-4">
+                <table id="train-schedule" class="table-auto">
+                    <thead class="border-b-2 border-blue-500">
+                        <tr>
+                          <th class="pr-5 py-2 text-left">Train Name</th>
+                          <th class="pr-5 py-2 text-left">Destination</th>
+                          <th class="pr-5 py-2 text-left">Frequency</th>
+                          <th class="pr-5 py-2 text-left">Next Arrival</th>
+                          <th class="pr-5 py-2 text-left">Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </section>
+    <section id="train-form">
+        <form class="w-full max-w-xl">
+            <div class="xl:flex xl:items-center mb-6">
+                <div class="xl:w-1/4">
+                    <label class="block text-white font-bold xl:text-right mb-1 xl:mb-0 pr-4" for="inline-full-name">
+                        Train Name
+                    </label>
+                </div>
+                <div class="xl:w-3/4">
+                    <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                        id="train-name" type="text" value="Train">
+                </div>
+            </div>
+            <div class="xl:flex xl:items-center mb-6">
+                    <div class="xl:w-1/4">
+                        <label class="block text-white font-bold xl:text-right mb-1 xl:mb-0 pr-4" for="inline-full-name">
+                            Destination
+                        </label>
+                    </div>
+                    <div class="xl:w-3/4">
+                        <input
+                            class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                            id="train-destination" type="text" value="Destination">
+                    </div>
+                </div>
+                <div class="xl:flex xl:items-center mb-6">
+                        <div class="xl:w-1/4">
+                            <label class="block text-white font-bold xl:text-right mb-1 xl:mb-0 pr-4" for="inline-full-name">
+                                Time of First Train
+                            </label>
+                        </div>
+                        <div class="xl:w-3/4">
+                            <input
+                                class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                                id="train-time" type="time" value="Jane Doe">
+                        </div>
+                    </div>
+            <div class="xl:flex xl:items-center mb-6">
+                <div class="xl:w-1/4">
+                    <label class="block text-white font-bold xl:text-right mb-1 xl:mb-0 pr-4" for="inline-username">
+                        Frequency (minutes)
+                    </label>
+                </div>
+                <div class="xl:w-3/4">
+                    <input
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                        id="train-frequency" type="number" placeholder="25">
+                </div>
+            </div>
+            <div class="xl:flex xl:items-center">
+                <div class="xl:w-1/4"></div>
+                <div class="xl:w-3/4">
+                    <button id="submit-button" class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</body>
+
+</html>
