@@ -42,8 +42,12 @@ header p{
     position:absolute;
     right:10%;
 }
+/* #table-card{
+    background:rgba(255,255,255,0.05);
+} */
 #current-train-header{
     font-weight:700;
+    background:#000;
 }
 
 #train-table{
@@ -53,14 +57,10 @@ header p{
     justify-content: center;
 }
 
-#train-schedule tbody tr:nth-child(odd){
-    background:rgba(255,255,255,0.1);
-    background-size:cover;
+#train-schedule tbody tr{
+    border-bottom:0.5px solid rgba(255,255,255,0.3);
+    height:40px;
     width:100%;
-}
-
-#train-schedule tbody tr:nth-child(even){
-    background:rgba(255,255,255,0.2);
 }
 
 #train-form{
