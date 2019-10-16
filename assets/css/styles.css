@@ -49,12 +49,19 @@ header p{
     font-weight:700;
     background:#000;
 }
-
+th{
+    color:rgba(255,255,255,0.8);
+    font-weight:400;
+    font-size:17px;
+}
 #train-table{
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.the-train{
+    font-weight:700;
 }
 
 #train-schedule tbody tr{
