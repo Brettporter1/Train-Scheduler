@@ -12,8 +12,8 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 function reloadTable(){
-    $('#train-schedule  tbody').empty();
-    console.log('refreshed')
+    // $('#train-schedule  tbody').empty();
+    // console.log('refreshed')
 database.ref().on('child_added', function(schedule){
     var key = schedule.key;
     var trainSchedule = schedule.val()
