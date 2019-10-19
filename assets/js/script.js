@@ -11,29 +11,46 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
+function reloadTable(){
+    $('#train-schedule  tbody').empty();
+    console.log('refreshed')
 database.ref().on('child_added', function(schedule){
-    trainSchedule = schedule.val()
+    var key = schedule.key;
+    var trainSchedule = schedule.val()
+    var timeConverted = moment(trainSchedule.time, 'hh:mm').subtract(1, 'years');
+    var timeDiff = moment().diff(moment(timeConverted), 'minutes');
+    var timeRemaining = timeDiff % trainSchedule.frequency;
+    var minutesAway = trainSchedule.frequency - timeRemaining;
+    var nextArrival = moment().add(minutesAway, 'minutes').format('hh:mm');
     newTrain = $('<tr>');
-    newTrain.append(`<td class="pr-5 the-train">${trainSchedule.name}</td><td class="pr-5">${trainSchedule.destination}</td><td class="pr-5">${trainSchedule.frequency}</td><td class="pr-5">${trainSchedule.nextArrival}</td><td class="pr-5">${trainSchedule.minutesAway}</td>`);
+    newTrain.append(`<td class="pr-5 the-train">${trainSchedule.name}</td><td class="pr-5">${trainSchedule.destination}</td><td class="pr-5">${trainSchedule.frequency} minutes</td><td class="pr-5">${nextArrival}</td><td class="pr-5">${minutesAway} Minutes away</td><td><button  class="delete-button shadow border-2 border-red-500 hover:bg-red-500 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 rounded" data-key="${key}" type="button">delete</button></td>`);
     $('#train-schedule tbody').append(newTrain);
 })
-
+}
 $('#submit-button').on('click',function(event){
     event.preventDefault();
     var trainName = $('#train-name').val().trim();
     var destination = $('#train-destination').val().trim();
     var time = $('#train-time').val().trim();
     var frequency = $('#train-frequency').val().trim();
-    var nextArrival = ''
-    var minutesAway = ''
 
     database.ref().push({
         name:trainName,
         destination:destination,
         time:time,
         frequency:frequency,
-        nextArrival:nextArrival,
-        minutesAway:minutesAway
+        timeAdded: firebase.database.ServerValue.TIMESTAMP
     });
-    console.log(trainName);
+    $('#train-name').val('');
+    $('#train-destination').val('');
+    $('#train-time').val('');
+    $('#train-frequency').val('');
 })
+
+$(document).on("click", ".delete-button", function() {
+    keyref = $(this).attr("data-key");
+    database.ref().child(keyref).remove();
+    reloadTable();
+  });
+  reloadTable();
+  

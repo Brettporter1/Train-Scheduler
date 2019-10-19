@@ -60,6 +60,9 @@ th{
     align-items: center;
     justify-content: center;
 }
+.max-width-table{
+    max-width:40rem;
+}
 .the-train{
     font-weight:700;
 }
@@ -76,4 +79,31 @@ th{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+@media only screen and (max-width:600px){
+
+header{
+    position:relative;
+    top:0px;
+    left:0px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+}
+header h1{
+    position:relative;
+    text-align:center;
+    width:100vw;
+    top:0px;
+    left:0px;
+}
+header p{
+    position: relative;
+    text-align:center;
+    width:100vw;
+    top:0px;
+    left:0px;
+}
 }
