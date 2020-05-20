@@ -4,4 +4,4 @@
 
 ### check it out here https://brettporter1.github.io/Train-Scheduler/
 
-This is a basic javascript application uses firebase to store train information.
+This is a basic javascript application that uses firebase to store train information.
