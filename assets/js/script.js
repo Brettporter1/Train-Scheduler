@@ -32,6 +32,7 @@ function reloadTable() {
     $('#train-schedule tbody').append(newTrain);
   });
 }
+reloadTable();
 $('#submit-button').on('click', function (event) {
   event.preventDefault();
   var trainName = $('#train-name').val().trim();
@@ -62,4 +63,3 @@ $(document).on('click', '.delete-button', function () {
   database.ref().child(keyref).remove();
   reloadTable();
 });
-reloadTable();
