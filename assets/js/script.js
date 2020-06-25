@@ -60,9 +60,8 @@ $('#submit-button').on('click', function (event) {
 
 $(document).on('click', '.delete-button', function () {
   keyref = $(this).attr('data-key');
-  console.log(keyref);
   database.ref().child(keyref).remove();
-  window.location.reload();
+  this.closest('tr').remove();
 });
 
 reloadTable();
